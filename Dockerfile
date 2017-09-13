@@ -19,6 +19,7 @@ RUN apk add --no-cache \
   php7-apache2 \
   php7-curl \
   php7-phar \
+  php7-dom \
   apache2
 
 ADD httpd.conf /etc/apache2
