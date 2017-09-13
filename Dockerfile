@@ -1,8 +1,6 @@
 FROM alpine
 
-RUN ln -s /var/www/localhost/htdocs /app
-
-WORKDIR /app
+WORKDIR /var/www/localhost/htdocs
 
 RUN apk add --no-cache \
   php7 \
@@ -27,9 +25,9 @@ ADD httpd.conf /etc/apache2
 
 RUN mkdir -p /run/apache2
 
-ONBUILD ADD . /app
+ONBUILD ADD . /var/www/localhost/htdocs
 ONBUILD RUN php composer install --no-dev
-ONBUILD RUN chown apache:apache /app -R
+ONBUILD RUN chown apache:apache /var/www/localhost/htdocs -R
 
 EXPOSE 80
 
