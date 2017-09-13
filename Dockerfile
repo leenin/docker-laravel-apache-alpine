@@ -22,6 +22,7 @@ RUN apk add --no-cache \
 
 ADD httpd.conf /etc/apache2
 
+ONBUILD ADD . /app
 ONBUILD RUN php composer install
 
 EXPOSE 80
