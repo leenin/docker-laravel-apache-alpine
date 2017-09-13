@@ -18,6 +18,7 @@ RUN apk add --no-cache \
   php7-xml \
   php7-apache2 \
   php7-curl \
+  php7-phar \
   apache2
 
 ADD httpd.conf /etc/apache2
