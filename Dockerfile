@@ -28,7 +28,8 @@ ADD httpd.conf /etc/apache2
 RUN mkdir -p /run/apache2
 
 ONBUILD ADD . /app
-ONBUILD RUN php composer install
+ONBUILD RUN php composer install --no-dev
+ONBUILD RUN chown apache:apache /app -R
 
 EXPOSE 80
 
