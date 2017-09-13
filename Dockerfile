@@ -5,12 +5,10 @@ RUN ln -s /var/www/localhost/htdocs /app
 WORKDIR /app
 
 RUN apk add --no-cache \
-  wget \
   php7 \
   php7-xml \
   php7-pdo \
   php7-pdo_mysql \
-  php7-mysql \
   php7-openssl \
   php7-zip \
   php7-tokenizer \
