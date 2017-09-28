@@ -23,6 +23,9 @@ RUN apk add --no-cache \
   php7-iconv \
   apache2
 
+RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing gnu-libiconv
+ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
+
 ADD httpd.conf /etc/apache2
 
 RUN mkdir -p /run/apache2
