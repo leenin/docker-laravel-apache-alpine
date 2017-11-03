@@ -32,7 +32,7 @@ RUN mkdir -p /run/apache2
 
 ONBUILD ADD . /var/www/localhost/htdocs
 ONBUILD RUN php composer install --no-dev
-ONBUILD RUN chmod 777 -R /var/www/localhost/htdocs/storage
+ONBUILD RUN chown apache:apache /var/www/localhost/htdoc -R
 
 EXPOSE 80
 
