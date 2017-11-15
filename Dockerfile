@@ -21,6 +21,7 @@ RUN apk add --no-cache \
   php7-xmlwriter \
   php7-ctype \
   php7-iconv \
+  php7-zlib \
   apache2
 
 RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing gnu-libiconv
