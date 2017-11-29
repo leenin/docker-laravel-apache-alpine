@@ -14,6 +14,7 @@ RUN apk add --no-cache \
   php7-mbstring \
   php7-json \
   php7-xml \
+  php7-xmlrpc \
   php7-apache2 \
   php7-curl \
   php7-phar \
