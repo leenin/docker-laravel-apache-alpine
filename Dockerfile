@@ -20,6 +20,7 @@ RUN apk add --no-cache \
   php7-phar \
   php7-dom \
   php7-xmlwriter \
+  php7-xmlreader \
   php7-ctype \
   php7-iconv \
   php7-zlib \
