@@ -3,6 +3,7 @@ FROM alpine
 WORKDIR /var/www/localhost/htdocs
 
 RUN apk add --no-cache \
+  curl \
   php7 \
   php7-xml \
   php7-pdo \
@@ -27,6 +28,9 @@ RUN apk add --no-cache \
   php7-zlib \
   apache2
 
+RUN curl -sS https://getcomposer.org/installer | \
+  php -- --install-dir=/usr/bin/ --filename=composer
+
 RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing gnu-libiconv
 ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 
@@ -35,7 +39,7 @@ ADD httpd.conf /etc/apache2
 RUN mkdir -p /run/apache2
 
 ONBUILD ADD . /var/www/localhost/htdocs
-ONBUILD RUN php composer install --no-scripts --no-autoloader
+ONBUILD RUN composer install --no-scripts --no-autoloader
 ONBUILD RUN composer run-script post-autoload-dump
 ONBUILD RUN chown apache:apache /var/www/localhost/htdocs -R
 
