@@ -35,7 +35,8 @@ ADD httpd.conf /etc/apache2
 RUN mkdir -p /run/apache2
 
 ONBUILD ADD . /var/www/localhost/htdocs
-ONBUILD RUN php composer install --no-dev
+ONBUILD RUN php composer install --no-script --no-autoloader
+ONBUILD RUN composer run-script post-autoload-dump
 ONBUILD RUN chown apache:apache /var/www/localhost/htdocs -R
 
 EXPOSE 80
