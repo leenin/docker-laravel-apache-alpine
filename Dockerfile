@@ -40,6 +40,7 @@ RUN mkdir -p /run/apache2
 
 ONBUILD ADD . /var/www/localhost/htdocs
 ONBUILD RUN composer install --no-scripts --no-autoloader
+ONBUILD RUN composer dumpautoload
 ONBUILD RUN composer run-script post-autoload-dump
 ONBUILD RUN chown apache:apache /var/www/localhost/htdocs -R
 
