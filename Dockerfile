@@ -40,7 +40,7 @@ RUN mkdir -p /run/apache2
 
 ONBUILD COPY composer.json /var/www/localhost/htdocs
 ONBUILD COPY composer.lock /var/www/localhost/htdocs
-ONBUILD RUN composer install --no-scripts --no-autoloader
+ONBUILD RUN composer install --no-scripts --no-autoloader --no-dev
 ONBUILD COPY . /var/www/localhost/htdocs
 ONBUILD RUN composer dumpautoload
 ONBUILD RUN chown apache:apache /var/www/localhost/htdocs -R
