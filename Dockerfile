@@ -5,7 +5,6 @@ WORKDIR /var/www/localhost/htdocs
 RUN apk add --no-cache \
   curl \
   php7 \
-  php7-xml \
   php7-pdo \
   php7-pdo_mysql \
   php7-openssl \
@@ -26,6 +25,7 @@ RUN apk add --no-cache \
   php7-ctype \
   php7-iconv \
   php7-zlib \
+  php7-opcache \
   apache2
 
 RUN curl -sS https://getcomposer.org/installer | \
@@ -43,7 +43,7 @@ ONBUILD COPY composer.lock /var/www/localhost/htdocs
 ONBUILD RUN composer install --no-scripts --no-autoloader --no-dev
 ONBUILD COPY . /var/www/localhost/htdocs
 ONBUILD RUN composer dumpautoload
-ONBUILD RUN chown apache:apache /var/www/localhost/htdocs -R
+ONBUILD RUN chown apache:apache -R /var/www/localhost/htdocs/storage /var/www/localhost/htdocs/bootstrap/cache
 
 EXPOSE 80
 
