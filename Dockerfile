@@ -5,6 +5,7 @@ WORKDIR /var/www/localhost/htdocs
 RUN apk add --no-cache \
   curl \
   php7 \
+  php7-gd \
   php7-pdo \
   php7-pdo_mysql \
   php7-openssl \
