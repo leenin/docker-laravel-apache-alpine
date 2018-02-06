@@ -31,6 +31,9 @@ RUN apk add --no-cache \
 RUN curl -sS https://getcomposer.org/installer | \
   php -- --install-dir=/usr/bin/ --filename=composer
 
+RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing gnu-libiconv
+ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
+
 ADD httpd.conf /etc/apache2
 
 RUN mkdir -p /run/apache2
