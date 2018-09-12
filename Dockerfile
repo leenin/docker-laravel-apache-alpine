@@ -18,6 +18,7 @@ RUN apk add --no-cache \
   php7-xmlrpc \
   php7-apache2 \
   php7-curl \
+  php7-fileinfo \
   php7-phar \
   php7-dom \
   php7-xmlwriter \
