@@ -46,6 +46,8 @@ ONBUILD RUN composer install --no-scripts --no-autoloader --no-dev
 ONBUILD COPY . /var/www/localhost/htdocs
 ONBUILD RUN composer dumpautoload
 ONBUILD RUN chown apache:apache -R /var/www/localhost/htdocs/storage /var/www/localhost/htdocs/bootstrap/cache
+ONBUILD RUN touch /var/www/localhost/htdocs/storage/logs/laravel.log
+ONBUILD RUN chmod 777 /var/www/localhost/htdocs/storage/logs/laravel.log
 
 EXPOSE 80
 
